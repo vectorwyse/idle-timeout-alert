@@ -1,0 +1,25 @@
+{
+    "name": "vectorwyse/idle-timeout-alert",
+    "description": "A Laravel package for alerting idle sessions about to expire.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeffrey Li",
+            "email": "jeffrey@vectorwyse.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Vectorwyse\\IdleTimeoutAlert\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vectorwyse\\IdleTimeoutAlert\\IdleTimeoutAlertServiceProvider"
+            ]
+        }
+    }
+}
