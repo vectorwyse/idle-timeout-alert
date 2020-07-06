@@ -3,6 +3,8 @@
 
 SESSION_LIFETIME is great but how is the user supposed to know when the session is about to expire due to inactivity, especially if it is a low value? When the session is about to expire, show a dialog so the user can choose not to be logged out.
 
+![](screenshot.png)
+
 ## Installation
 
 ```sh
@@ -30,7 +32,7 @@ Publish assets to vendor folder:
 php artisan vendor:publish --provider="Vectorwyse\IdleTimeoutAlert\IdleTimeoutAlertServiceProvider" --tag="vue-components"
 ```
 
-Step 2: Add the following to your application's `resources/js/app.js`:
+Step 2: Add the following to your application's `resources/js/app.js`. Place within section where components are registered:
 ```js
 require('./../assets/vendor/vectorwyse/idle-timeout-alert/js/app');
 ```
