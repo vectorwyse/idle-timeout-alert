@@ -1,5 +1,5 @@
 <template>
-    <modal-component id="timeout-modal" :visible="showModal" noclose="true" @close="showModal = true">
+    <modal-component id="timeout-modal" :visible="showModal" noclose="true" @close="resetTimeout()">
         <div>
             <p class="text-center">We haven't heard from you in a while!</p>
             <p class="text-center">You will be automatically logged out in:</p>

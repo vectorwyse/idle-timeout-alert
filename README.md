@@ -22,6 +22,24 @@ protected $rememberTokenName = false;
 Step 2:
 Remove the "Remember Me" checkbox from your login form
 
+### Publish and compile assets
+
+Step 1: 
+Publish assets to vendor folder:
+```sh
+php artisan vendor:publish --provider="Vectorwyse\IdleTimeoutAlert\IdleTimeoutAlertServiceProvider" --tag="vue-components"
+```
+
+Step 2: Add the following to your application's `resources/js/app.js`:
+```js
+require('./../assets/vendor/vectorwyse/idle-timeout-alert/js/app');
+```
+
+Step 3: Compile
+```sh
+npm run dev
+```
+
 ## Support Us
 [Vectorwyse](https://vectorwyse.com) is a digital agency offering advisory and web development services. We love building things with Laravel and Vue.js, so when we have an opportunity to give back to the community, we're super excited! 
 

@@ -15,6 +15,8 @@ class TimeoutCalculator
      */
     public static function getSecondsLeft(Request $request)
     {
+        // We have to get session id from cookie.
+        // If we try to grab it from session(), we end up touching the timestamp during page load
         $cookie = $request->cookie('laravel_session');
         if (!$cookie) {
             throw new TimeoutCalculatorException('Not logged in');

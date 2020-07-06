@@ -18,4 +18,9 @@ Route::prefix('idle-timeout-alert')->group(function () {
     Route::get('check', function (Request $request) {
         return response()->json(TimeoutCalculator::getSecondsLeft($request));
     });
+
+    Route::middleware('web')->post('ping', function (Request $request) {
+        $request->session()->put('idle-timeout-alert.last_ping', now());
+        return response()->json(config('session.lifetime') * 60);
+    });
 });
