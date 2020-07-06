@@ -26,7 +26,7 @@ const timeToAlert = 31;
 
 export default {
     name: "TimeoutDialog",
-    props: ["keepAlive"],
+    props: ["keepAlive", "ignoreActivity"],
     components: {
         ModalComponent,
     },
@@ -34,6 +34,7 @@ export default {
         return {
             showModal: false,
             remainingTime: undefined,
+            isIdle: false,
             timer: setInterval(() => {
                 if (this.remainingTime === undefined) return;
                     
@@ -50,7 +51,7 @@ export default {
 
                 if (this.remainingTime <= timeToAlert) {
                     if (!this.showModal) {
-                        if (this.keepAlive) {
+                        if (this.keepAlive || (this.ignoreActivity !== true && !this.isIdle)) {
                             return this.resetTimeout();
                         }
 
@@ -77,6 +78,12 @@ export default {
     },
     mounted() {
         this.checkTimeout();
+    },
+    onIdle() {
+        this.isIdle = true;
+    },
+    onActive() {
+        this.isIdle = false;
     },
     methods: {
         checkTimeout(callback) {
