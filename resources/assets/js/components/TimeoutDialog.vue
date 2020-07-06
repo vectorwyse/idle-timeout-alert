@@ -26,7 +26,7 @@ const timeToAlert = 31;
 
 export default {
     name: "TimeoutDialog",
-    props: [],
+    props: ["keepAlive"],
     components: {
         ModalComponent,
     },
@@ -50,13 +50,16 @@ export default {
 
                 if (this.remainingTime <= timeToAlert) {
                     if (!this.showModal) {
+                        if (this.keepAlive) {
+                            return this.resetTimeout();
+                        }
+
                         // another check to make sure if we still need to show modal
                         this.checkTimeout(remainingTime => {
                             if (remainingTime <= timeToAlert) {
                                 this.showModal = true;
                             }
                         });
-                        return;
                     } else {
                         // modal is already shown, but maybe timeout reset in another tab or window
                         // check again every 5 seconds
