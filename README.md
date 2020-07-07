@@ -7,6 +7,10 @@ When the session is about to expire, show a dialog so the user can choose not to
 
 ![](screenshot.png)
 
+## How it works
+
+This code doesn't actually log the user out. It still relies on Laravel's mechanism for expiring sessions. All it does is periodically check how much time before the session will expire and alert the user when it is almost time.
+
 ## Installation
 
 Laravel package and NPM dependencies

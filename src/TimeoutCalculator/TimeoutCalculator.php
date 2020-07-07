@@ -25,8 +25,9 @@ class TimeoutCalculator
         $sessionId = Crypt::decryptString($request->cookie('laravel_session'));
         
         switch (config('session.driver')) {
-            case 'file':    $checker = new FileSessionChecker($sessionId);  break;
-            default:        throw new TimeoutCalculatorException('Session driver not supported');
+            case 'database':    $checker = new DatabaseSessionChecker($sessionId);  break;
+            case 'file':        $checker = new FileSessionChecker($sessionId);      break;
+            default:            throw new TimeoutCalculatorException('Session driver not supported');
         }
 
         $secondsSince = time() - $checker->getLastModified();
