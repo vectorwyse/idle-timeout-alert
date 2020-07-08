@@ -11,6 +11,8 @@ When the session is about to expire, show a dialog so the user can choose not to
 
 This code doesn't actually log the user out. It still relies on Laravel's mechanism for expiring sessions. All it does is periodically check how much time before the session will expire and alert the user when it is almost time.
 
+A demo library is at [vectorwyse/idle-timeout-alert-demo](https://github.com/vectorwyse/idle-timeout-alert-demo)
+
 ## Installation
 
 Laravel package and NPM dependencies
